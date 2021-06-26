@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 import Button from "../UI/Button";
 import Card from "../UI/Card";
@@ -6,11 +6,14 @@ import ErrorModal from "../UI/ErrorModal";
 import styles from "./AddUsers.module.css";
 
 const AddUser = props => {
-  const [username, setUsername] = useState("");
-  const [age, setAge] = useState("");
+  const nameInputRef = useRef();
+  const ageInputRef = useRef();
+
   const [error, setError] = useState();
   const addUserHandler = event => {
     event.preventDefault();
+    const username = nameInputRef.current.value;
+    const age = ageInputRef.current.value;
     if (username.trim().length === 0 || age.trim().length === 0) {
       setError({
         title: "Invalid unput",
@@ -30,16 +33,10 @@ const AddUser = props => {
       username: username,
       age: age,
     });
-    setUsername("");
-    setAge("");
+    nameInputRef.current.value = "";
+    ageInputRef.current.value = "";
   };
-  const ageChangeHandler = event => {
-    setAge(event.target.value);
-  };
-  const usernameChangeHandler = event => {
-    setUsername(event.target.value);
-  };
-  const errorOkHandler = event => {
+  const errorOkHandler = () => {
     setError();
   };
   return (
@@ -54,19 +51,9 @@ const AddUser = props => {
       <Card className={styles.input}>
         <form onSubmit={addUserHandler}>
           <label>Username</label>
-          <input
-            id="username"
-            type="text"
-            value={username}
-            onChange={usernameChangeHandler}
-          />
+          <input id="username" type="text" ref={nameInputRef} />
           <label>Age (Years)</label>
-          <input
-            id="age"
-            type="number"
-            value={age}
-            onChange={ageChangeHandler}
-          />
+          <input id="age" type="number" ref={ageInputRef} />
           <Button type="submit" onClick={addUserHandler}>
             Add user
           </Button>

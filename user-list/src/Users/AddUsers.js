@@ -21,7 +21,7 @@ const AddUser = props => {
     if (+age < 0) {
       setError({
         title: "Invalid unput",
-        message: "Please enter a age >= 0.",
+        message: "Please enter an age >= 0.",
       });
       return;
     }
@@ -43,7 +43,7 @@ const AddUser = props => {
     setError();
   };
   return (
-    <div>
+    <>
       {error && (
         <ErrorModal
           title={error.title}
@@ -72,7 +72,7 @@ const AddUser = props => {
           </Button>
         </form>
       </Card>
-    </div>
+    </>
   );
 };
 

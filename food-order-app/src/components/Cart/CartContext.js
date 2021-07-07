@@ -7,6 +7,7 @@ const CartContext = React.createContext({
   onRemoveItem: () => {},
   onCloseCart: () => {},
   onShowCart: () => {},
+  onClearCart: () => {},
 });
 
 export const CartContextProvider = props => {
@@ -34,6 +35,7 @@ export const CartContextProvider = props => {
         onRemoveItem: removeItemHandler,
         onCloseCart: () => setIsCartVisible(false),
         onShowCart: () => setIsCartVisible(true),
+        onClearCart: () => editItems({}),
       }}
     >
       {props.children}

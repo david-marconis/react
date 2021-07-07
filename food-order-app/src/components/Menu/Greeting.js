@@ -3,14 +3,16 @@ import classes from "./Greeting.module.css";
 const Greeting = props => {
   return (
     <section className={classes.summary}>
-      <h2>Delicious Sushi, Delivered To You</h2>
+      <h2>Superdigg sushi i Strandvegen</h2>
       <p>
-        Choose your favorite meal from our broad selection of available meals
-        and enjoy a delicious lunch or dinner at home.
+        Velg din favorittsushi fra vårt store utvalg av deilige sushi retter og
+        tilbehør, og nyt en fantastisk matopplevelse i vår restaurant eller
+        hjemme.
       </p>
       <p>
-        All our meals are cooked with high-quality ingredients, just-in-time and
-        of course by experienced chefs!
+        Alle våre retter blir laget med høy kvalitet og lokal fisk fra Gaula.
+        Vår mesterkokk Kine er en av landets fremste sushikokker og har studert
+        biologi!
       </p>
     </section>
   );

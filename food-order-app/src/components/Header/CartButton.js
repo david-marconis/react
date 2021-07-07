@@ -30,7 +30,6 @@ const CartButton = props => {
       <span className={classes.icon}>
         <CartIcon />
       </span>
-      <span>Your cart</span>
       <span className={classes.badge}>{totalCount}</span>
     </button>
   );

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import classes from "./Cart.module.css";
 import CartContext from "./CartContext";
 import { DUMMY_MEALS } from "../Menu/dummy-meals";
@@ -10,14 +10,13 @@ const findItem = itemId => {
 };
 
 const toCartItem = (item, amount) => (
-  <li key={item.id}>
-    <CartItem
-      id={item.id}
-      name={item.name}
-      price={item.price}
-      amount={amount}
-    ></CartItem>
-  </li>
+  <CartItem
+    key={item.id}
+    id={item.id}
+    name={item.name}
+    price={item.price}
+    amount={amount}
+  ></CartItem>
 );
 
 const accumulator = items => {
@@ -31,19 +30,39 @@ const Cart = () => {
     .reduce(accumulator(items), 0)
     .toFixed(2);
   const orderHandler = () => {
-    console.log("Ordering items: ", items);
+    cartContext.onClearCart();
+    setIsOrdered(true);
+  };
+  const [isOrdered, setIsOrdered] = useState(false);
+  const orderOkHandler = () => {
+    setIsOrdered(false);
+    cartContext.onCloseCart();
   };
 
   return (
     <Modal>
-      <ul className={classes["cart-items"]}>
-        {Object.keys(items).map(id => toCartItem(findItem(id), items[id]))}
-      </ul>
-      <div className={classes.total}>Total amount {totalAmount}</div>
-      <footer className={classes.actions}>
-        <button onClick={() => cartContext.onCloseCart()}>Close</button>
-        <button onClick={orderHandler}>Order</button>
-      </footer>
+      {isOrdered && (
+        <>
+          <h2>Din ordre #{(Math.random() * 10000) | 0} er bestillt!</h2>
+          <div className={classes.actions}>
+            <button className={classes.actions} onClick={orderOkHandler}>
+              OK!
+            </button>
+          </div>
+        </>
+      )}
+      {!isOrdered && (
+        <>
+          <ul className={classes["cart-items"]}>
+            {Object.keys(items).map(id => toCartItem(findItem(id), items[id]))}
+          </ul>
+          <div className={classes.total}>Total {totalAmount}</div>
+          <footer className={classes.actions}>
+            <button onClick={() => cartContext.onCloseCart()}>Lukk</button>
+            <button onClick={orderHandler}>Bestill</button>
+          </footer>
+        </>
+      )}
     </Modal>
   );
 };

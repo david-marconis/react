@@ -11,13 +11,12 @@ const MenuItemControl = props => {
   const addToCartHandler = event => {
     event.preventDefault();
     const amount = inputRef.current.getValue();
-    console.log(`Adding ${amount} of ${props.id}`);
     cartContext.onAddItem(props.id, amount);
   };
   return (
     <form className={classes.form}>
       <Input
-        label="Amount"
+        label="Antall"
         ref={inputRef}
         input={{
           id: `amount_${props.id}`,
@@ -29,7 +28,7 @@ const MenuItemControl = props => {
         }}
       />
       <button type="submit" onClick={addToCartHandler}>
-        + Add
+        Legg til
       </button>
     </form>
   );

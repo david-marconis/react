@@ -1,0 +1,9 @@
+.status-text {
+  color: white;
+  text-align: center;
+}
+
+.error-text {
+  color: red;
+  text-align: center;
+}

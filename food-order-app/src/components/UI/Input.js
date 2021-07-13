@@ -6,13 +6,14 @@ const Input = React.forwardRef((props, ref) => {
 
   useImperativeHandle(ref, () => {
     return {
-      getValue: () => inputRef.current.value,
+      getValue: () => inputRef.current.value
     };
   });
   return (
     <div className={`${classes.input} ${props.className}`}>
       <label htmlFor={props.input.id}>{props.label}</label>
       <input ref={inputRef} {...props.input} />
+      {props.input.errorText && <label> {props.input.errorText}</label>}
     </div>
   );
 });

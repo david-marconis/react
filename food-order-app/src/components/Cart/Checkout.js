@@ -15,13 +15,13 @@ const Checkout = props => {
     touch: touchName
   } = useInput(isNotEmpty);
   const {
-    value: address,
-    valueIsValid: addressIsValid,
-    hasError: addressHasError,
-    valueChangeHandler: addressChangeHandler,
-    valueBlurHandler: addressBlurHandler,
-    reset: resetAddress,
-    touch: touchAddress
+    value: street,
+    valueIsValid: streetIsValid,
+    hasError: streetHasError,
+    valueChangeHandler: streetChangeHandler,
+    valueBlurHandler: streetBlurHandler,
+    reset: resetStreet,
+    touch: touchStreet
   } = useInput(isNotEmpty);
   const {
     value: city,
@@ -46,23 +46,23 @@ const Checkout = props => {
   });
 
   const formIsValid =
-    nameIsValid && addressIsValid && cityIsValid && postalCodeIsValid;
+    nameIsValid && streetIsValid && cityIsValid && postalCodeIsValid;
 
   const formSubmitHandler = event => {
     event.preventDefault();
     touchName();
-    touchAddress();
+    touchStreet();
     touchCity();
     touchPostalCode();
     if (formIsValid) {
       props.onConfirm({
         name: name.trim(),
-        address: address.trim(),
+        street: street.trim(),
         city: city.trim(),
         postalCode: postalCode.trim()
       });
       resetName();
-      resetAddress();
+      resetStreet();
       resetCity();
       resetPostalCode();
     }
@@ -78,7 +78,7 @@ const Checkout = props => {
         className={`${classes.control} ${nameHasError && classes.invalid}`}
         label="Fullt navn"
         input={{
-          id: "checkoutName",
+          id: "name",
           value: name,
           onBlur: nameBlurHandler,
           onChange: nameChangeHandler,
@@ -86,21 +86,21 @@ const Checkout = props => {
         }}
       />
       <Input
-        className={`${classes.control} ${addressHasError && classes.invalid}`}
+        className={`${classes.control} ${streetHasError && classes.invalid}`}
         label="Adresse"
         input={{
-          id: "checkoutAddress",
-          value: address,
-          onBlur: addressBlurHandler,
-          onChange: addressChangeHandler,
-          errorText: addressHasError && "Adressen kan ikke være tom"
+          id: "street",
+          value: street,
+          onBlur: streetBlurHandler,
+          onChange: streetChangeHandler,
+          errorText: streetHasError && "Adressen kan ikke være tom"
         }}
       />
       <Input
         className={`${classes.control} ${cityHasError && classes.invalid}`}
         label="Poststed"
         input={{
-          id: "checkoutCity",
+          id: "city",
           value: city,
           onBlur: cityBlurHandler,
           onChange: cityChangeHandler,
@@ -113,7 +113,7 @@ const Checkout = props => {
         }`}
         label="Postnummer"
         input={{
-          id: "checkoutPostalCode",
+          id: "postalCode",
           value: postalCode,
           onBlur: postalCodeBlurHandler,
           onChange: postalCodeChangeHandler,

@@ -1,6 +1,7 @@
 {
-  "scripts": {
-    "heroku-prebuild": "cd food-order-app && npm install && npm run build",
-    "start": "cd food-order-app && npm start"
-  }
+  "name": "daves-workspace",
+  "version": "1.0.0",
+  "workspaces": [
+    "./*"
+  ]
 }

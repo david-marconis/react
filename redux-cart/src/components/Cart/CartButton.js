@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
-import { cartActions } from "../../store/cart";
+import { uiActions } from "../../store/ui";
 
 import classes from "./CartButton.module.css";
 
 const CartButton = props => {
   const dispatch = useDispatch();
   const toggleCartHandler = () => {
-    dispatch(cartActions.toggleVisibility());
+    dispatch(uiActions.toggleCartVisibility());
   };
   const totalQuantity = useSelector(state => state.cart.items).reduce(
     (totalQuantity, quantity) => (totalQuantity += quantity),

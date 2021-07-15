@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  isVisible: false,
-  items: []
+  items: [],
+  hasChanged: false
 };
 
 const cartSlice = createSlice({
@@ -13,6 +13,7 @@ const cartSlice = createSlice({
     addItem(state, action) {
       const id = action.payload;
       state.items[id] = state.items[id] ? state.items[id] + 1 : 1;
+      state.hasChanged = true;
     },
 
     removeItem(state, action) {
@@ -21,13 +22,14 @@ const cartSlice = createSlice({
       if (state.items[id] <= 0) {
         delete state.items[id];
       }
+      state.hasChanged = true;
     },
 
-    toggleVisibility(state) {
-      state.isVisible = !state.isVisible;
+    setCart(state, action) {
+      state.items = action.payload;
     }
   }
 });
 
 export const cartActions = cartSlice.actions;
-export default cartSlice.reducer;
+export default cartSlice;

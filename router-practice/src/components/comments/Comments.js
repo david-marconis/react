@@ -17,6 +17,7 @@ const Comments = () => {
     setIsAddingComment(true);
   };
   const addedCommentHandler = useCallback(() => {
+    setIsAddingComment(false);
     sendRequest(quoteId);
   }, [sendRequest, quoteId]);
 

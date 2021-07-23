@@ -1,3 +1,6 @@
 node_modules
 .eslintcache
 build
+.env.production
+.next
+.eslintrc

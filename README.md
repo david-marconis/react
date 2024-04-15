@@ -6,12 +6,12 @@ Here are descriptions of the projects in this repository
 ### Sushi take away restaurant
 [food-order-app](./food-order-app) / https://sushi.marconis.dev
 
-<img src="https://github.com/david-marconis/react/assets/138445089/08083668-3116-4a83-a61f-ef56dae1819d" width="50%" height="50%">
+[<img src="https://github.com/david-marconis/react/assets/138445089/08083668-3116-4a83-a61f-ef56dae1819d" width="50%" height="50%">](https://sushi.marconis.dev)
 
 ### Meetup planner
 [nextjs-advanced](./nextjs-advanced) / https://meetups.marconis.dev
 
-<img src="https://github.com/david-marconis/react/assets/138445089/23c5324f-7de6-4591-a56d-f8c4f37176b1" width="50%" height="50%">
+[<img src="https://github.com/david-marconis/react/assets/138445089/23c5324f-7de6-4591-a56d-f8c4f37176b1" width="50%" height="50%">](https://meetups.marconis.dev)
 
 ### Expense tracker
 [expenses](./expenses)
